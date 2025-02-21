@@ -1,0 +1,38 @@
+html {
+  background-color: rgb(16, 16, 16);
+  color: white;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+
+input {
+  display: block;
+  margin: auto;
+}
+
+.input-section {
+  margin: 32px auto;
+}
+
+@media only screen and (max-width: 1080px) {
+  main {
+    display: block;
+  }
+  p {
+    font-size: 32px;
+  }
+
+  input {
+    /* padding: 16px; */
+    font-size: 32px;
+  }
+
+  button {
+    font-size: 32px;
+  }
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<header>
+  <link href="../tools-style.css" rel="stylesheet">
+  <h1>Electric cost calculator</h1>
+</header>
+
+<main>
+
+  <section class="input-section">
+    <p>Energy rate (per kWh)</p>
+    <input type="number" id="energy-rate" placeholder="0.00">
+  </section>
+
+  <section class="input-section">
+    <p>Device / Appliance Wattage</p>
+    <input type="number" id="device-watts" inputmode="numeric" placeholder="Watts">
+  </section>
+
+  <section class="input-section">
+    <p>Hours per day (optional)</p>
+    <input type="number" id="hrsperday" placeholder="Hrs">
+  </section>
+
+  <section></section>
+  <button id="calculate-button">Calculate</button>
+  <section></section>
+
+  <section></section>
+
+  <section>
+    <p id="getKwhOutputText">Kilowatt-Hours:</p>
+    <p id="hrsPerKwhOutputText">Hours per Kilowatt-Hour:</p>
+    <p id="costPerHourText">Cost per hour:</p>
+    <p id="hrsPerDayText">[number] hours per day = </p>
+  </section>
+
+  <section></section>
+  
+  <script src="energy-calculator.js"></script>
+</main>
+
+<footer></footer>
