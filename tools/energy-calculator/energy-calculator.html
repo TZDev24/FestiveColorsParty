@@ -1,43 +1,44 @@
 <!DOCTYPE html>
+<link href="energy-calculator.css" rel="stylesheet">
 
+<!-- TODO: complete rewrite -->
 <header>
-  <link href="../tools-style.css" rel="stylesheet">
   <h1>Electric cost calculator</h1>
 </header>
 
 <main>
+  <p>Energy rate</p>
+  <input type="number" id="energyRate" value="0.10">
+  <section class="device-input">
+    <h2>Device 1</h2>
+    <section class="input-area">
+      <p>Wattage</p>
+      <input type="number" id="device1Wattage" placeholder="0">
 
-  <section class="input-section">
-    <p>Energy rate (per kWh)</p>
-    <input type="number" id="energy-rate" placeholder="0.00">
+      <p>Quantity</p>
+      <input type="number" id="device1Quantity" value="1">
+    </section>
+    <p id="dev1kWhOutput">Device 1 kWh</p>
+    <p id="dev1costOutput">Device 1 cost</p>
   </section>
 
-  <section class="input-section">
-    <p>Device / Appliance Wattage</p>
-    <input type="number" id="device-watts" inputmode="numeric" placeholder="Watts">
+  <section class="device-input">
+    <h2>Device 2</h2>
+    <section class="input-area">
+      <p>Wattage</p>
+      <input type="number" id="device2Wattage" placeholder="0">
+
+      <p>Quantity</p>
+      <input type="number" id="device2Quantity" value="1">
+    </section>
+
+    <p id="dev2kWhOutput">Device 2 kWh</p>
+    <p id="dev2costOutput">Device 2 cost</p>
   </section>
-
-  <section class="input-section">
-    <p>Hours per day (optional)</p>
-    <input type="number" id="hrsperday" placeholder="Hrs">
-  </section>
-
-  <section></section>
-  <button id="calculate-button">Calculate</button>
-  <section></section>
-
-  <section></section>
-
-  <section>
-    <p id="getKwhOutputText">Kilowatt-Hours:</p>
-    <p id="hrsPerKwhOutputText">Hours per Kilowatt-Hour:</p>
-    <p id="costPerHourText">Cost per hour:</p>
-    <p id="hrsPerDayText">[number] hours per day = </p>
-  </section>
-
-  <section></section>
-  
-  <script src="energy-calculator.js"></script>
 </main>
 
-<footer></footer>
+<footer>
+  <!-- Put the script at the very bottom so that all the elements already exist by the time the code runs -->
+  <script src="energy-calculator.js"></script>
+</footer>
+

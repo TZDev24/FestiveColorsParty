@@ -1,3 +1,7 @@
+:root {
+  --innerColor: rgb(32, 32, 32);
+}
+
 html {
   background-color: rgb(16, 16, 16);
   color: white;
@@ -5,9 +9,18 @@ html {
   text-align: center;
 }
 
-main {
+header, main, footer {
+  width: 50%;
+  margin: auto;
+}
+
+.device-input {
+  background-color: var(--innerColor);
+}
+
+.input-area {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: 50% 50%;
 }
 
 input {
@@ -15,13 +28,9 @@ input {
   margin: auto;
 }
 
-.input-section {
-  margin: 32px auto;
-}
-
 @media only screen and (max-width: 1080px) {
-  main {
-    display: block;
+  header, main, footer {
+    width: 80%;
   }
   p {
     font-size: 32px;
@@ -30,9 +39,7 @@ input {
   input {
     /* padding: 16px; */
     font-size: 32px;
+    width: 75%;
   }
 
-  button {
-    font-size: 32px;
-  }
 }

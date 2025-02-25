@@ -1,71 +1,79 @@
-// You know, there's probably a better way to do all of this but for
-// now this is the best I can come up with.
-
-// The inputs, so we can gather data
-let energyRateInput = document.getElementById("energy-rate");
-let deviceWattageInput = document.getElementById("device-watts");
-let hrsPerDayInput = document.getElementById("hrsperday");
-
-// The text fields, so we can modify them
-let kwhOutputText = document.getElementById("getKwhOutputText");
-let hrsPerKwhText = document.getElementById("hrsPerKwhOutputText");
-let costPerHourText = document.getElementById("costPerHourText");
-let hrsPerDayText = document.getElementById("hrsPerDayText");
-
-// The button, so we can run code when it's pressed
-let calculateButton = document.getElementById("calculate-button");
 // var hoursPerKwh = 1000 / wattage;
 
-function getKilowattHours() {
-  // If the input type is number, we don't need to parse it
-  let wattage = deviceWattageInput.value;
-  if (wattage === "") {
-    return "Wattage not provided";
+// The inputs that we're getting our data from
+let energyRate = document.getElementById("energyRate");
+
+let dev1Watts = document.getElementById("device1Wattage");
+let dev2Watts = document.getElementById("device2Wattage");
+
+let dev1Qty = document.getElementById("device1Quantity");
+let dev2Qty = document.getElementById("device2Quantity");
+
+// The outputs where we are displaying our data
+let dev1kwhOutput = document.getElementById("dev1kWhOutput");
+let dev2kwhOutput = document.getElementById("dev2kWhOutput");
+
+let dev1costOutput = document.getElementById("dev1costOutput");
+let dev2costOutput = document.getElementById("dev2costOutput");
+
+function hoursPerKwh(wattage, quantity = 1) {
+  return (1000 / wattage) / quantity;
+}
+
+function costPerHour(energyRate, wattage, quantity = 1) {
+  let kwh = wattage / 1000 * quantity;
+  return energyRate * kwh;
+}
+
+
+// Instead of having to press a calculate button, let's just update the math in real time. Much more convenient that way.
+//
+let updateOutput = function() {
+
+  // Start doing the math and updating the text accordingly
+  let dev1hrsPerKwh = hoursPerKwh(dev1Watts.value, dev1Qty.value).toFixed(3);
+  let dev2hrsPerKwh = hoursPerKwh(dev2Watts.value, dev2Qty.value).toFixed(3);
+
+  if (dev1hrsPerKwh > dev2hrsPerKwh) {
+    dev1kwhOutput.style.color = "red";
+    dev1kwhOutput.textContent = dev1hrsPerKwh + " hrs/kWh";
+
+    dev2kwhOutput.style.color = "green";
+    dev2kwhOutput.textContent = dev2hrsPerKwh + " hrs/kWh";
   }
-  console.log(wattage / 1000);
-  return wattage / 1000;
-}
+  else if (dev2hrsPerKwh > dev1hrsPerKwh) {
+    dev1kwhOutput.style.color = "green";
+    dev1kwhOutput.textContent = dev1hrsPerKwh + " hrs/kWh";
 
-function getHoursPerKwh() {
-  let wattage = deviceWattageInput.value;
-  if (wattage === "") {
-    // Tell the user they didn't provide any input
-    return "Wattage wasn't provided";
-  }
-  console.log(1000 / wattage);
-  return (1000 / wattage).toFixed(5);
-}
-
-function getEnergyCostPerHour() {
-  let kwh = getKilowattHours();
-  let energyCost = energyRateInput.value;
-  if (energyCost === "") {
-    console.log(kwh + " for one hour = No input provided");
-    return "No input provided";
+    dev2kwhOutput.style.color = "red";
+    dev2kwhOutput.textContent = dev2hrsPerKwh + " hrs/kWh";
   }
 
-  console.log(kwh + " for one hour = $" + (energyCost * kwh).toFixed(4) + " per hour");
-  return (energyCost * kwh).toFixed(5);
-}
 
-function getHoursPerDayCost() {
-  let kwh = getKilowattHours();
-  let energyCost = getEnergyCostPerHour();
-  let hrsPerDay = hrsPerDayInput.value;
-  
+  let dev1costPerHour = costPerHour(energyRate.value, dev1Watts.value, dev1Qty.value).toFixed(5);
+  let dev2costPerHour = costPerHour(energyRate.value, dev2Watts.value, dev2Qty.value).toFixed(5);
 
-  console.log(energyCost + " per hour * " + hrsPerDay + " = " + (energyCost * hrsPerDay));
+  if (dev1costPerHour > dev2costPerHour) {
+    dev1costOutput.style.color = "red";
+    dev2costOutput.style.color = "green";
+  }
+  else if (dev2costPerHour > dev1costPerHour) {
+    dev1costOutput.style.color = "green";
+    dev2costOutput.style.color = "red";
+  }
 
-  hrsPerDayText.textContent = hrsPerDay + " hours per day = " + (energyCost * hrsPerDay);
-  
-}
+  dev1costOutput.textContent = "$" + dev1costPerHour + "/hr";
+  dev2costOutput.textContent = "$" + dev2costPerHour + "/hr";
 
-function calculateEnergy() {
-  getKwhOutputText.textContent = "Kilowatt-Hours: " + getKilowattHours();
-  hrsPerKwhText.textContent = "Hours per Kilowatt-Hour: " + getHoursPerKwh();
-  costPerHourText.textContent = "Cost per hour: $" + getEnergyCostPerHour();
-  getHoursPerDayCost();
-}
+  console.log("Device 1 cost per hour: " + dev1costPerHour);
+  console.log("Device 2 cost per hour: " + dev2costPerHour);
+};
 
-// Call our functions when the button is clicked
-calculateButton.addEventListener("click", calculateEnergy);
+energyRate.addEventListener("input", updateOutput);
+dev1Watts.addEventListener("input", updateOutput);
+dev2Watts.addEventListener("input", updateOutput);
+dev1Qty.addEventListener("input", updateOutput);
+dev2Qty.addEventListener("input", updateOutput);
+
+// Run the function at the very end of the script. When the user refreshes the page on some browsers, they won't need to re-enter the input to see the output.
+updateOutput();
