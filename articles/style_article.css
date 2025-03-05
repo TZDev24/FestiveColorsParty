@@ -1,0 +1,44 @@
+html {
+  background-color: rgb(16, 16, 16);
+  color: white;
+  text-align: center;
+  font-family: sans-serif;
+  width: 50%;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  font-weight: bold;
+  color: rgb(0, 128, 255);
+}
+
+a:hover {
+  color: rgb(0, 224, 255);
+}
+
+.article-title {
+  text-decoration: underline;
+}
+
+.article-main-content {
+  margin-bottom: 192px;
+}
+
+.article-bold {
+  color: rgb(96, 255, 96);
+}
+
+.article-bottom {
+  margin-top: 96px;
+}
+
+@media only screen and (max-width: 1080px) {
+  .article-title, h1 {
+    font-size: 96px;
+  }
+
+  .article-bold, h2 {
+    font-size: 48px;
+  }
+}
