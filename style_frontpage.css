@@ -43,6 +43,10 @@ a:hover {
 
 @media only screen and (max-width: 1080px) {
 
+  h1 {
+    font-size: 64px;
+  }
+
   #Header-name {
     display: block;
   }
@@ -54,6 +58,7 @@ a:hover {
   a {
     font-size: 32px;
     margin-bottom: 64px;
+    display: block;
   }
 
   .homepage-link {
