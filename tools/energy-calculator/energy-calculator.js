@@ -1,4 +1,5 @@
 // var hoursPerKwh = 1000 / wattage;
+// var perHourCost = 1000 / wattage * quantity * energyRate
 
 // The inputs that we're getting our data from
 let energyRate = document.getElementById("energyRate");
@@ -31,21 +32,30 @@ function costPerHour(energyRate, wattage, quantity = 1) {
 let updateOutput = function() {
 
   // Start doing the math and updating the text accordingly
-  let dev1hrsPerKwh = hoursPerKwh(dev1Watts.value, dev1Qty.value).toFixed(3);
-  let dev2hrsPerKwh = hoursPerKwh(dev2Watts.value, dev2Qty.value).toFixed(3);
+  
+  let dev1hrsPerKwh = 1000 / dev1Watts.value;
+  let dev2hrsPerKwh = 1000 / dev2Watts.value;
+
+  // Divide the hrs per kwh by quantity in a separate statement. It was acting strange
+  // when doing all the math in a single statement.
+  //
+  // UPDATE: This didn't fix it either. What the hell, man?
+  dev1hrsPerKwh = (dev1hrsPerKwh / dev1Qty.value).toFixed(2);
+  dev2hrsPerKwh = (dev2hrsPerKwh / dev2Qty.value).toFixed(2);
+
 
   if (dev1hrsPerKwh > dev2hrsPerKwh) {
-    dev1kwhOutput.style.color = "red";
-    dev1kwhOutput.textContent = dev1hrsPerKwh + " hrs/kWh";
-
-    dev2kwhOutput.style.color = "green";
-    dev2kwhOutput.textContent = dev2hrsPerKwh + " hrs/kWh";
-  }
-  else if (dev2hrsPerKwh > dev1hrsPerKwh) {
     dev1kwhOutput.style.color = "green";
     dev1kwhOutput.textContent = dev1hrsPerKwh + " hrs/kWh";
 
     dev2kwhOutput.style.color = "red";
+    dev2kwhOutput.textContent = dev2hrsPerKwh + " hrs/kWh";
+  }
+  else {
+    dev1kwhOutput.style.color = "red";
+    dev1kwhOutput.textContent = dev1hrsPerKwh + " hrs/kWh";
+
+    dev2kwhOutput.style.color = "green";
     dev2kwhOutput.textContent = dev2hrsPerKwh + " hrs/kWh";
   }
 
@@ -57,7 +67,7 @@ let updateOutput = function() {
     dev1costOutput.style.color = "red";
     dev2costOutput.style.color = "green";
   }
-  else if (dev2costPerHour > dev1costPerHour) {
+  else {
     dev1costOutput.style.color = "green";
     dev2costOutput.style.color = "red";
   }
