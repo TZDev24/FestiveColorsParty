@@ -58,3 +58,6 @@ with open(
 </footer>
     """
     )
+
+# After creating an article, automatically add it to our list of articles on our website.
+# TODO: work on setting up a way to automatically update the articles page
