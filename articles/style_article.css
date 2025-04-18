@@ -18,7 +18,7 @@ a:hover {
 }
 
 .article-title {
-  text-decoration: underline;
+  color: rgb(255, 0, 255);
 }
 
 .article-main-content {
@@ -35,7 +35,7 @@ a:hover {
 
 @media only screen and (max-width: 1080px) {
   .article-title, h1 {
-    font-size: 96px;
+    font-size: 72px;
   }
 
   .article-bold, h2 {
@@ -43,6 +43,10 @@ a:hover {
   }
 
   p {
-    font-size: 24px;
+    font-size: 32px;
+  }
+
+  a {
+    font-size: 32px;
   }
 }

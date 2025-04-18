@@ -3,17 +3,7 @@ html {
 	font-family: sans-serif;
 	color: white;
   width: 100%;
-}
-
-header, main, footer {
-	width: 50%;
-	margin: 0 auto;
-	text-align: center;
-}
-
-#Header-name {
-	width: 100%;
-	margin: 0 auto;
+  text-align: center;
 }
 
 #header-image {
@@ -23,10 +13,6 @@ header, main, footer {
 .homepage-link {
   display: block;
   margin: 8px;
-}
-
-.breakline {
-	border: 2px solid rgb(0, 128, 255);
 }
 
 a {
@@ -64,8 +50,8 @@ a:hover {
   }
 
   a {
-    font-size: 48px;
-    margin-bottom: 64px;
+    font-size: 40px;
+    margin-bottom: 48px;
     display: block;
   }
 

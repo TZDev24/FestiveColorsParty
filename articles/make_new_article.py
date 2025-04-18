@@ -2,13 +2,15 @@ from datetime import datetime
 import os
 
 # Do this before we do anything else
-articleDirectory = "articles"
-numArticles = len(os.listdir(articleDirectory))
+# articleDirectory = "articles"
+numArticles = len(os.listdir("."))
 
 # Hacky band-aid fix for having style_article.css in there
 # Since style_article.css counts as a file, we have to subtract
 # the total number of articles by 1.
-numArticles -= 1
+#
+# UPDATE: -2 instead to hack around the fact that make_new_article.py is in there too
+numArticles -= 2
 
 # What's the title of the article at the top?
 articleTitle = input("Enter article title: ")
@@ -29,9 +31,7 @@ articleFileName = articleFileName.lower()
 articleDate = datetime.today().strftime("%d %B %Y")
 
 # Create our new html article and automatically insert boilerplate
-with open(
-    f"{articleDirectory}/article-{numArticles + 1}-{articleFileName}.html", "w"
-) as newFile:
+with open(f"./article-{numArticles + 1}-{articleFileName}.html", "w") as newFile:
     newFile.write(
         f"""<!DOCTYPE html>
 
