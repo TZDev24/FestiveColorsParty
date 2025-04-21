@@ -16,6 +16,15 @@ html {
   margin: 8px;
 }
 
+p {
+  width: 34%;
+  margin: 0 auto;
+}
+
+#welcome-text {
+  margin-bottom: 32px;
+}
+
 a {
   color: rgb(0, 128, 255);
   text-decoration: none;
@@ -58,5 +67,11 @@ a:hover {
 
   .homepage-link {
     margin-bottom: 32px;
+  }
+}
+
+@media only screen and (min-width: 2560px) {
+  p {
+    width: 20%;
   }
 }
