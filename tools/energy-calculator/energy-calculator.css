@@ -9,9 +9,33 @@ html {
   text-align: center;
 }
 
-header, main, footer {
-  width: 50%;
-  margin: auto;
+label {
+  vertical-align: center;
+}
+
+main {
+  width: 75%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 33.4% 33.4% 33.4%;
+}
+
+#section-left {
+  /*
+  background-color: rgb(128, 128, 128);
+  */
+}
+
+#section-center {
+  display: grid;
+  /*Can have input and text(e.g paragraph) on the same line this way */
+  grid-template-columns: 50% 50%;
+}
+
+#section-right {
+  /*
+  background-color: rgb(128, 128, 128);
+  */
 }
 
 .device-input {
@@ -30,16 +54,16 @@ input {
 
 @media only screen and (max-width: 1080px) {
   header, main, footer {
-    width: 80%;
+    width: 100%;
   }
   p {
-    font-size: 32px;
+    font-size: 26px;
   }
 
   input {
     /* padding: 16px; */
-    font-size: 32px;
-    width: 75%;
+    font-size: 26px;
+    width: 100%;
   }
 
 }

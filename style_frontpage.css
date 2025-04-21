@@ -37,6 +37,14 @@ a:hover {
   color: rgb(0, 224, 255);
 }
 
+main {
+  margin-bottom: 128px;
+}
+
+footer {
+
+}
+
 @media only screen and (max-width: 1080px) {
 
   h1 {

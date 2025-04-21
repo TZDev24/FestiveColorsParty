@@ -1,40 +1,34 @@
 <!DOCTYPE html>
 <link href="energy-calculator.css" rel="stylesheet">
+<title>Energy Calculator</title>
 
-<!-- TODO: complete rewrite -->
+<link rel="apple-touch-icon" sizes="180x180" href="../../apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../../favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../../favicon-16x16.png">
+<link rel="manifest" href="../../site.webmanifest">
+
 <header>
   <h1>Electric cost calculator</h1>
 </header>
 
 <main>
-  <p>Energy rate</p>
-  <input type="number" id="energyRate" value="0.10" step="0.01">
-  <section class="device-input">
-    <h2>Device 1</h2>
-    <section class="input-area">
-      <p>Wattage</p>
-      <input type="number" id="device1Wattage" placeholder="0">
+  <section id="section-left"></section>
 
-      <p>Quantity</p>
-      <input type="number" id="device1Quantity" value="1">
-    </section>
-    <p id="dev1kWhOutput">Device 1 kWh</p>
-    <p id="dev1costOutput">Device 1 cost</p>
+  <section id="section-center">
+    <input type="number" id="energy-rate" value="0.10" step="0.01">
+    <p>Energy Rate</p>
+
+    <input type="number" id="wattage">
+    <p>Wattage</p>
+
+    <input type="number" id="quantity" value="1">
+    <p>Quantity</p>
+
+    <p>Cost</p>
+    <p id="cost-output">$0.02/hr</p>
   </section>
 
-  <section class="device-input">
-    <h2>Device 2</h2>
-    <section class="input-area">
-      <p>Wattage</p>
-      <input type="number" id="device2Wattage" placeholder="0">
-
-      <p>Quantity</p>
-      <input type="number" id="device2Quantity" value="1">
-    </section>
-
-    <p id="dev2kWhOutput">Device 2 kWh</p>
-    <p id="dev2costOutput">Device 2 cost</p>
-  </section>
+  <section id="section-right"></section>
 </main>
 
 <footer>
