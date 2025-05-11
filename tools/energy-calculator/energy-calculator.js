@@ -9,6 +9,9 @@ let quantity = document.getElementById("quantity");
 // Output that we can write to
 let costOutput = document.getElementById("cost-output");
 
+// How many decimal places should we show?
+var precision = 5;
+
 console.log("Energy rate: " + energyRate.value);
 console.log("Wattage: " + wattage.value);
 
@@ -22,14 +25,13 @@ function wattsToKwh(wattage) {
 
 function costPerHour(energyRate, wattage) {
   let kwh = wattage / 1000;
-  return (energyRate * kwh).toFixed(6);
+  return (energyRate * kwh);
 }
 
 // Instead of having to press a calculate button, let's just update the math in real time. Much more convenient that way.
 //
 let updateOutput = function() {
-  let cost = "$" + (costPerHour(energyRate.value, wattage.value) * quantity.value) + "/hr";
-  console.log("Test is this working?");
+  let cost = "$" + (costPerHour(energyRate.value, wattage.value) * quantity.value).toFixed(precision) + "/hr";
   costOutput.textContent = cost;
 };
 
