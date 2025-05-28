@@ -6,6 +6,10 @@ html {
   text-align: center;
 }
 
+#header-name {
+
+}
+
 #header-image {
   max-height: 320px;
   max-width: 288px;
@@ -31,6 +35,8 @@ a {
   font-weight: bold;
   display: block;
   margin-bottom: 16px;
+  width: 50%;
+  margin: 0 auto;
 }
 
 a:hover {
@@ -55,7 +61,7 @@ footer {
     display: none;
   }
 
-  #Header-name {
+  #header-name {
     display: block;
   }
 
@@ -82,4 +88,9 @@ footer {
   p {
     width: 20%;
   }
+}
+
+img {
+  display: block;
+  margin: 0 auto;
 }

@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from datetime import datetime
 import os
 
@@ -10,7 +11,7 @@ numArticles = len(os.listdir("."))
 # the total number of articles by 1.
 #
 # UPDATE: -2 instead to hack around the fact that make_new_article.py is in there too
-numArticles -= 2
+numArticles -= 3
 
 # What's the title of the article at the top?
 articleTitle = input("Enter article title: ")
@@ -40,20 +41,21 @@ with open(f"./article-{numArticles + 1}-{articleFileName}.html", "w") as newFile
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="manifest" href="../site.webmanifest">
 
-<link href="style_article.css" rel="stylesheet">
+<link href="style_article_new.css" rel="stylesheet">
 
 <title>{articleTitle} | FestiveColors.party</title>
 
 <header>
-    <h1 class="article-title">{articleTitle}</h1>
-  <p>{articleDate}</p>
+  <h1 id="article-title">{articleTitle}</h1>
+  <h3 id="article-date">{articleDate}</h3>
+  <hr>
 </header>
 
-<main class="article-main-content">
+<main>
 
 </main>
 
-<footer class="article-bottom">
+<footer>
   <a href="https://festivecolors.party">FestiveColors.party</a>
 </footer>
     """
